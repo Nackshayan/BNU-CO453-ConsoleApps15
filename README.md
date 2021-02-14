@@ -1,9 +1,9 @@
 # C# Console Applications App01 to App05
 | Author | Details |
 | ---- | ---- |
-**Name**: | Student Name  |
-**Student ID**: | 12345678 |
-**Course:** | Computing |
+**Name**: | Kate Gordon  |
+**Student ID**: | 21802875 |
+**Course:** | Cyber Security with Foundation Year |
 **Module**: | CO453     |
 **Started**: | January 2021 |    
 
