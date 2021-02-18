@@ -1,4 +1,6 @@
-﻿namespace ConsoleAppProject.App01
+﻿using System;
+
+namespace ConsoleAppProject.App01
 {
     /// <summary>
     /// This App allows a user to easily convert a given distance
@@ -30,7 +32,9 @@
         /// </summary>  
         private void InputMiles()
         {
-
+            Console.Write("Please enter the number of miles >");
+            string value = Console.ReadLine();
+            miles = Convert.ToDouble(value);
         }
 
         /// <summary>
