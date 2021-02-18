@@ -22,6 +22,7 @@ namespace ConsoleAppProject.App01
         /// </summary>       
         public void Run()
         {
+            OutputHeading();
             InputMiles();
             CalculateFeet();
             OutputFeet();
@@ -52,6 +53,19 @@ namespace ConsoleAppProject.App01
         private void OutputFeet()
         {
             Console.WriteLine(miles + " miles is " + feet + " feet!");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OutputHeading()
+        {
+            Console.WriteLine();
+            Console.WriteLine(" ***************************** ");
+            Console.WriteLine("      Convert Miles to Feet    ");
+            Console.WriteLine("         by Kate Gordon        ");
+            Console.WriteLine(" ***************************** ");
+            Console.WriteLine();
         }
     }
 
