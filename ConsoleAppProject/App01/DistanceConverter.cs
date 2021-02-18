@@ -14,6 +14,7 @@ namespace ConsoleAppProject.App01
     public class DistanceConverter
     {
         public const int FEET_IN_MILES = 5280;
+
         private double feet;
         private double miles;
 
@@ -60,12 +61,10 @@ namespace ConsoleAppProject.App01
         /// </summary>
         private void OutputHeading()
         {
-            Console.WriteLine();
-            Console.WriteLine(" ***************************** ");
+            Console.WriteLine("\n ***************************** ");
             Console.WriteLine("      Convert Miles to Feet    ");
             Console.WriteLine("         by Kate Gordon        ");
-            Console.WriteLine(" ***************************** ");
-            Console.WriteLine();
+            Console.WriteLine(" ***************************** \n");
         }
     }
 
