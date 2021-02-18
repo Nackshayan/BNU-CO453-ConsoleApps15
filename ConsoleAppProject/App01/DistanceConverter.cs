@@ -15,11 +15,13 @@
         private double miles;
 
         /// <summary>
-        /// 
+        /// Call all other methods
         /// </summary>       
         public void Run()
         {
-
+            InputMiles();
+            CalculateFeet();
+            OutputFeet();
         }
 
         /// <summary>
