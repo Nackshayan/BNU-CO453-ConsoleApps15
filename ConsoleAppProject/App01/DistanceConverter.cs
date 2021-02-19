@@ -3,12 +3,12 @@
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// This App will prompt a unser to input a unit of distance
-    /// and will calculate and output the equivalent distance in
-    /// a different unit.
+    /// This App will prompt the user to input a distance
+    /// measured in one unit and will calculate and output
+    /// the equivalent distance in another unit.
     /// </summary>
     /// <author>
-    /// Kate Gordon version 0.3
+    /// Kate Gordon version 0.6
     /// </author>
     public class DistanceConverter
     {
