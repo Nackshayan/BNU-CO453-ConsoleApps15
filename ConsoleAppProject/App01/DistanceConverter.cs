@@ -44,12 +44,47 @@ namespace ConsoleAppProject.App01
         /// </summary>       
         public void ConvertDistance()
         {
-            OutputHeading($"Converting {fromUnit} to {toUnit}!\n");
+            fromUnit = SelectUnit("Please select the from distance unit > ");
+            toUnit = SelectUnit("Please select the to distance unit > ");
+            
+                OutputHeading($"Converting {fromUnit} to {toUnit}!\n");
 
             fromDistance = InputDistance($"Please entre the number of {fromUnit} > ");
 
             //CalculateMetres();
             OutputDistance();
+        }
+
+        /// <summary>
+        /// Display a menu of distance units and then
+        /// prompt the user to select one and return it.
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
+        private string SelectUnit(string prompt)
+        {
+            Console.WriteLine();
+            Console.WriteLine($" 1. {FEET}");
+            Console.WriteLine($" 2. {METRES}");
+            Console.WriteLine($" 3. {MILES}");
+            Console.WriteLine();
+
+            Console.WriteLine(prompt);
+            string choice = Console.ReadLine();
+
+            if (choice.Equals("1"))
+            {
+                return FEET;
+            }
+            else if (choice.Equals("2"))
+            {
+                return METRES;
+            }
+            else if (choice.Equals("3"))
+            {
+                return MILES;
+            }
+            return choice;
         }
 
         /// <summary>
