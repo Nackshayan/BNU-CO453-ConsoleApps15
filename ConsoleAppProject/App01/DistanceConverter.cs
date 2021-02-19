@@ -4,8 +4,8 @@ namespace ConsoleAppProject.App01
 {
     /// <summary>
     /// This App will prompt the user to input a distance
-    /// measured in one unit and will calculate and output
-    /// the equivalent distance in another unit.
+    /// measured in one unit (fromUnit) and will calculate and output
+    /// the equivalent distance in another unit (toUnit).
     /// </summary>
     /// <author>
     /// Kate Gordon version 0.6
@@ -15,52 +15,46 @@ namespace ConsoleAppProject.App01
         // constants
         public const int FEET_IN_MILES = 5280;
         public const double METRES_IN_MILES = 1609.34;
+        public const double FEET_IN_METRES = 3.28084;
+
+        public const string FEET = "Feet";
+        public const string METRES = "Metres";
+        public const string MILES = "Miles";
 
         // attributes
-        private double feet;
-        private double miles;
-        private double metres;
+        private double fromDistance;
+        private double toDistance;
+
+        private string fromUnit;
+        private string toUnit;
 
         /// <summary>
-        /// Call methods for converting miles to feet
+        /// Constructor for Distance Converter
+        /// </summary>
+        public DistanceConverter()
+        {
+            fromUnit = MILES;
+            toUnit = FEET;
+        }
+
+        /// <summary>
+        /// This method will input the distance measured in miles
+        /// calculate the same distance in feet, and output the
+        /// distance in feet.
         /// </summary>       
         public void ConvertMilesToFeet()
         {
-            OutputHeading("Converting Miles to Feet!\n");
-           
-            miles = InputDistance("Please entre the number of miles > ");
-            CalculateFeet();
-            OutputDistance(miles, nameof(miles), feet, nameof(feet));
+            OutputHeading($"Converting {fromUnit} to {toUnit}!\n");
+
+            fromDistance = InputDistance($"Please entre the number of {fromUnit} > ");
+
+            //CalculateMetres();
+            OutputDistance(fromDistance, fromUnit, toDistance, toUnit);
         }
 
         /// <summary>
-        /// Call methods for converting feet to miles
-        /// </summary>  
-        public void ConvertFeetToMiles()
-        {
-            OutputHeading("Converting Feet to Miles!\n");
-
-            feet = InputDistance("Please entre the number of feet > ");
-
-            CalculateMiles();
-            OutputDistance(feet, nameof(feet), miles, nameof(miles));
-        }
-
-        /// <summary>
-        /// Call methods for converting miles to metres
-        /// </summary>  
-        public void ConvertMilesToMetres()
-        {
-            OutputHeading("Converting Miles to Metres!\n");
-
-            miles = InputDistance("Please entre the number of miles > ");
-
-            CalculateMetres();
-            OutputDistance(miles, nameof(miles), metres, nameof(metres));
-        }
-
-        /// <summary>
-        /// Prompt the user to enter the distance in miles
+        /// Prompt the user to enter the fromDistance
+        /// distance.
         /// Input the miles as a double number
         /// </summary>  
         private double InputDistance(string prompt)
@@ -71,31 +65,8 @@ namespace ConsoleAppProject.App01
         }
 
         /// <summary>
-        /// Method to calculate feet in miles
-        /// </summary>  
-        private void CalculateFeet()
-        {
-            feet = miles * FEET_IN_MILES;
-        }
-
-        /// <summary>
-        /// Method to calculate miles in feet
-        /// </summary>
-        private void CalculateMiles()
-        {
-            miles = feet / FEET_IN_MILES;
-        }
-
-        /// <summary>
-        /// Method to calculate metres in miles
-        /// </summary>
-        private void CalculateMetres()
-        {
-            metres = miles * METRES_IN_MILES;
-        }
-
-        /// <summary>
-        /// Method to output feet
+        /// This method will output the dstance calculated
+        /// by the conversion methods
         /// </summary>  
         private void OutputDistance(
             double fromDistance, string fromUnit, 
@@ -106,13 +77,16 @@ namespace ConsoleAppProject.App01
         }
 
         /// <summary>
-        /// Print method to print a heading for the Distance Converter
+        /// This method will output a heading for the 
+        /// Distance Converter
         /// </summary>
         private void OutputHeading(String prompt)
         {
             Console.WriteLine("\n ****************************** ");
+            Console.WriteLine("  ******************************  ");
             Console.WriteLine("        Distance Converter        ");
             Console.WriteLine("          by Kate Gordon          ");
+            Console.WriteLine(" ******************************   ");
             Console.WriteLine(" ****************************** \n");
 
             Console.WriteLine(prompt);
