@@ -3,13 +3,12 @@
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// This App allows a user to easily convert a given distance
-    /// from one unit of distance to another.
-    /// This class offers methods for converting a given distance
-    /// measured in miles to the equivallent distance in feet.
+    /// This App will prompt a unser to input a unit of distance
+    /// and will calculate and output the equivalent distance in
+    /// a different unit.
     /// </summary>
     /// <author>
-    /// Kate Gordon version 0.1
+    /// Kate Gordon version 0.3
     /// </author>
     public class DistanceConverter
     {
