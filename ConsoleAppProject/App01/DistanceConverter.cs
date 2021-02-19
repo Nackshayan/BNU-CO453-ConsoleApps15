@@ -42,14 +42,14 @@ namespace ConsoleAppProject.App01
         /// calculate the same distance in feet, and output the
         /// distance in feet.
         /// </summary>       
-        public void ConvertMilesToFeet()
+        public void ConvertDistance()
         {
             OutputHeading($"Converting {fromUnit} to {toUnit}!\n");
 
             fromDistance = InputDistance($"Please entre the number of {fromUnit} > ");
 
             //CalculateMetres();
-            OutputDistance(fromDistance, fromUnit, toDistance, toUnit);
+            OutputDistance();
         }
 
         /// <summary>
@@ -68,9 +68,7 @@ namespace ConsoleAppProject.App01
         /// This method will output the dstance calculated
         /// by the conversion methods
         /// </summary>  
-        private void OutputDistance(
-            double fromDistance, string fromUnit, 
-            double toDistance, string toUnit)
+        private void OutputDistance()
         {
             Console.WriteLine($" {fromDistance} {fromUnit}" +
                 $" is {toDistance} {toUnit}!");
