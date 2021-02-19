@@ -27,6 +27,7 @@ namespace ConsoleAppProject.App01
         public void ConvertMilesToFeet()
         {
             OutputHeading();
+            Console.WriteLine("Converting Miles to Feet!\n");
             InputMiles();
             CalculateFeet();
             OutputFeet();
@@ -38,6 +39,7 @@ namespace ConsoleAppProject.App01
         public void ConvertFeetToMiles()
         {
             OutputHeading();
+            Console.WriteLine("Converting Feet to Miles!\n");
             InputFeet();
             CalculateMiles();
             OutputMiles();
@@ -49,6 +51,7 @@ namespace ConsoleAppProject.App01
         public void ConvertMilesToMetres()
         {
             OutputHeading();
+            Console.WriteLine("Converting Miles to Metres!\n");
             InputMiles();
             CalculateMetres();
             OutputMetres();
