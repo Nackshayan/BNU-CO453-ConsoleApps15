@@ -44,11 +44,13 @@ namespace ConsoleAppProject.App01
         /// </summary>       
         public void ConvertDistance()
         {
-            OutputHeading($"Converting {fromUnit} to {toUnit}!\n");
+            OutputHeading();
 
             fromUnit = SelectUnit("   Please select the from distance unit > ");
             toUnit = SelectUnit("   Please select the to distance unit > ");
-           
+
+            Console.WriteLine($"\n Converting {fromUnit} to {toUnit}");
+
             fromDistance = InputDistance($"   Please entre the number of {fromUnit} > ");
 
             CalculateDistance();
@@ -93,7 +95,9 @@ namespace ConsoleAppProject.App01
         {
             string choice = DisplayChoices(prompt);
 
-            return ExecuteChoice(choice);
+            string unit = ExecuteChoice(choice);
+            Console.WriteLine($"\n   You have chosen {unit}");
+            return unit;
         }
 
         private static string ExecuteChoice(string choice)
