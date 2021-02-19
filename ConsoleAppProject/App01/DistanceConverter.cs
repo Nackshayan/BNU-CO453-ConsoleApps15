@@ -30,7 +30,7 @@ namespace ConsoleAppProject.App01
            
             miles = InputDistance("Please entre the number of miles > ");
             CalculateFeet();
-            OutputFeet();
+            OutputDistance(miles, nameof(miles), feet, nameof(feet));
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace ConsoleAppProject.App01
             feet = InputDistance("Please entre the number of feet > ");
 
             CalculateMiles();
-            OutputMiles();
+            OutputDistance(feet, nameof(feet), miles, nameof(miles));
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace ConsoleAppProject.App01
             miles = InputDistance("Please entre the number of miles > ");
 
             CalculateMetres();
-            OutputMetres();
+            OutputDistance(miles, nameof(miles), metres, nameof(metres));
         }
 
         /// <summary>
@@ -97,25 +97,12 @@ namespace ConsoleAppProject.App01
         /// <summary>
         /// Method to output feet
         /// </summary>  
-        private void OutputFeet()
+        private void OutputDistance(
+            double fromDistance, string fromUnit, 
+            double toDistance, string toUnit)
         {
-            Console.WriteLine(miles + " miles are " + feet + " feet!");
-        }
-
-        /// <summary>
-        /// Method to output miles
-        /// </summary>  
-        private void OutputMiles()
-        {
-            Console.WriteLine(feet + " feet are " + miles + " miles!");
-        }
-
-        /// <summary>
-        /// Method to output metres
-        /// </summary>  
-        private void OutputMetres()
-        {
-            Console.WriteLine(miles + " miles are " + metres + " metres!");
+            Console.WriteLine($" {fromDistance} {fromUnit}" +
+                $" is {toDistance} {toUnit}!");
         }
 
         /// <summary>
