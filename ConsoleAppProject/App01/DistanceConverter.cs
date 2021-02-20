@@ -51,7 +51,7 @@ namespace ConsoleAppProject.App01
 
             Console.WriteLine($"\n Converting {fromUnit} to {toUnit}");
 
-            fromDistance = InputDistance($"   Please entre the number of {fromUnit} > ");
+            fromDistance = InputDistance($"\n   Please entre the number of {fromUnit} > ");
 
             CalculateDistance();
             OutputDistance();
@@ -100,6 +100,11 @@ namespace ConsoleAppProject.App01
             return unit;
         }
 
+        /// <summary>
+        /// Returns the selected unit of distance
+        /// </summary>
+        /// <param name="choice"></param>
+        /// <returns></returns>
         private static string ExecuteChoice(string choice)
         {
             if (choice.Equals("1"))
@@ -117,6 +122,13 @@ namespace ConsoleAppProject.App01
             return null;
         }
 
+        /// <summary>
+        /// This method displays the options to the user
+        /// and prompts the user to select an option for
+        /// both the from unit and to unit.
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         private static string DisplayChoices(string prompt)
         {
             Console.WriteLine();
@@ -148,8 +160,8 @@ namespace ConsoleAppProject.App01
         /// </summary>  
         private void OutputDistance()
         {
-            Console.WriteLine($" {fromDistance} {fromUnit}" +
-                $" is {toDistance} {toUnit}!");
+            Console.WriteLine($"\n {fromDistance} {fromUnit}" +
+                $" is {toDistance} {toUnit}!\n");
         }
 
         /// <summary>
