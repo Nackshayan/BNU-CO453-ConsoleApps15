@@ -46,12 +46,12 @@ namespace ConsoleAppProject.App01
         {
             OutputHeading();
 
-            fromUnit = SelectUnit("   Please select the from distance unit > ");
-            toUnit = SelectUnit("   Please select the to distance unit > ");
+            fromUnit = SelectUnit(" Please select the from distance unit > ");
+            toUnit = SelectUnit(" Please select the to distance unit > ");
 
             Console.WriteLine($"\n Converting {fromUnit} to {toUnit}");
 
-            fromDistance = InputDistance($"\n   Please entre the number of {fromUnit} > ");
+            fromDistance = InputDistance($"\n Please entre the number of {fromUnit} > ");
 
             CalculateDistance();
             OutputDistance();
@@ -96,7 +96,7 @@ namespace ConsoleAppProject.App01
             string choice = DisplayChoices(prompt);
 
             string unit = ExecuteChoice(choice);
-            Console.WriteLine($"\n   You have chosen {unit}");
+            Console.WriteLine($"\n You have chosen {unit}");
             return unit;
         }
 
@@ -171,9 +171,9 @@ namespace ConsoleAppProject.App01
         private void OutputHeading()
         {
             Console.WriteLine("\n ****************************** ");
-            Console.WriteLine("  ******************************  ");
+            Console.WriteLine(" ******************************  ");
             Console.WriteLine("        Distance Converter        ");
-            Console.WriteLine("          by Kate Gordon          ");
+            Console.WriteLine("         by Kate Gordon          ");
             Console.WriteLine(" ******************************   ");
             Console.WriteLine(" ****************************** \n");
         }
