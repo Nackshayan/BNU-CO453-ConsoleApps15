@@ -107,6 +107,7 @@ namespace ConsoleAppProject.App01
         /// <returns></returns>
         private static string ExecuteChoice(string choice)
         {
+
             if (choice.Equals("1"))
             {
                 return FEET;
@@ -119,7 +120,12 @@ namespace ConsoleAppProject.App01
             {
                 return MILES;
             }
-            return null;
+            else
+            {
+                Console.WriteLine("\n Invalid Choice!");
+                Console.WriteLine("\n Please use digits 1 to 3.");
+                return null;
+            }
         }
 
         /// <summary>
