@@ -1,4 +1,5 @@
 ﻿using ConsoleAppProject.App01;
+using ConsoleAppProject.App02;
 using System;
 
 namespace ConsoleAppProject
@@ -23,6 +24,9 @@ namespace ConsoleAppProject
 
             DistanceConverter converter = new DistanceConverter();
             converter.ConvertDistance();
+
+            BmiCalculator calculator = new BmiCalculator();
+            calculator.CalculateBodyMassIndex();
         }
     }
 }
