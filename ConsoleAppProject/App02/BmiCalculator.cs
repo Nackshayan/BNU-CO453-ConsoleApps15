@@ -10,8 +10,6 @@
     /// </author>
     public class BmiCalculator
     {
-        public class DistanceConverter
-        {
             // constants
             public const string STONE = "Stone";
             public const string POUNDS = "Pounds";
@@ -20,18 +18,23 @@
             public const string FEET = "Feet";
             public const string INCHES = "Inches";
             public const string CENTIMETERS = "Centimeters";
+
+            public const string METRIC = "metric";
+            public const string IMPERIAL = "Imperial"
            
 
             // attributes
-            private string unit;
+            private string weightUnit;
+            private string heightUnit;
+            private string unitType;
 
             /// <summary>
             /// Constructor for Distance Converter
             /// </summary>
-            public DistanceConverter()
+            public BmiCalculator()
             {
-                unit = INCHES;
-                unit = FEET;
+                weightUnit = STONE;
+                heightUnit = FEET;
             }
 
             /// <summary>
@@ -39,14 +42,14 @@
             /// calculate the same distance in feet, and output the
             /// distance in feet.
             /// </summary>       
-            public void ConvertDistance()
+            public void CalculateBodyMassIndex()
             {
                 OutputHeading();
 
-                unit = SelectUnit(" Please select the from distance unit > ");
-                unit = SelectUnit(" Please select the to distance unit > ");
+                unitType = SelectUnit(" Please select between Metric and Imperial > ");
+                
 
-                Console.WriteLine($"\n Converting {unit} to {unit}");
+                Console.WriteLine($"\n Calculating bmi from {unit}");
 
                 fromDistance = InputDistance($"\n Please entre the number of {unit} > ");
 
