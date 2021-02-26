@@ -1,4 +1,6 @@
-﻿namespace ConsoleAppProject.App02
+﻿using System;
+
+namespace ConsoleAppProject.App02
 {
     /// <summary>
     /// This App calculates a users body mass index, which
@@ -20,28 +22,32 @@
             public const string CENTIMETERS = "Centimeters";
 
             public const string METRIC = "metric";
-            public const string IMPERIAL = "Imperial"
+        public const string IMPERIAL = "Imperial";
            
 
             // attributes
+            private string unitType;
             private string weightUnit;
             private string heightUnit;
-            private string unitType;
+            private int weight;
+            private int height;
+            
 
             /// <summary>
             /// Constructor for Distance Converter
             /// </summary>
             public BmiCalculator()
             {
-                weightUnit = STONE;
-                heightUnit = FEET;
+                unitType = METRIC;
+                weight = 0;
+                height = 0;
             }
 
             /// <summary>
             /// This method will input the distance measured in miles
             /// calculate the same distance in feet, and output the
             /// distance in feet.
-            /// </summary>       
+            /// </summary>
             public void CalculateBodyMassIndex()
             {
                 OutputHeading();
@@ -49,40 +55,28 @@
                 unitType = SelectUnit(" Please select between Metric and Imperial > ");
                 
 
-                Console.WriteLine($"\n Calculating bmi from {unit}");
+                Console.WriteLine($"\n Calculating bmi in {unitType}");
 
-                fromDistance = InputDistance($"\n Please entre the number of {unit} > ");
+                 InputWeight($"\n Please enter your weight {unitType} > ");
+                 InputHeight($"\n Please enter your height {unitType} > ");
 
-                CalculateDistance();
-                OutputDistance();
+                CalculateBmi();
+                OutputBodyMassIndex();
             }
 
-            private void CalculateDistance()
+            private void CalculateBmi()
             {
-                if (unit == INCHES && unit == FEET)
+                if (unitType == METRIC)
                 {
-                    toDistance = fromDistance * FEET_IN_MILES;
+                    weightUnit = KILOGRAMS;
+                    heightUnit = CENTIMETERS;
                 }
-                else if (unit == FEET && unit == INCHES)
+                else if (unitType == IMPERIAL)
                 {
-                    toDistance = fromDistance / FEET_IN_MILES;
-                }
-                else if (unit == INCHES && unit == CENTIMETERS)
-                {
-                    toDistance = fromDistance * METRES_IN_MILES;
-                }
-                else if (unit == CENTIMETERS && unit == INCHES)
-                {
-                    toDistance = fromDistance / METRES_IN_MILES;
-                }
-                else if (unit == CENTIMETERS && unit == FEET)
-                {
-                    toDistance = fromDistance * FEET_IN_METRES;
-                }
-                else if (unit == FEET && unit == CENTIMETERS)
-                {
-                    toDistance = fromDistance / FEET_IN_METRES;
-                }
+                weightUnit = (STONE; POUNDS);
+                heightUnit = (FEET; INCHES) ;
+            }
+               
             }
 
             /// <summary>
@@ -164,7 +158,7 @@
             /// This method will output the dstance calculated
             /// by the conversion methods
             /// </summary>  
-            private void OutputDistance()
+            private void OutputBodyMassIndex()
             {
                 Console.WriteLine($"\n {fromDistance} {unit}" +
                     $" is {toDistance} {unit}!\n");
