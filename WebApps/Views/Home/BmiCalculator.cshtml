@@ -1,0 +1,44 @@
+﻿@model ConsoleAppProject.App02.BmiCalculator
+@{
+    ViewData["Title"] = "KG BMI Calculator";
+}
+<header class="jumbotron">
+    <h1>BMI Calculator</h1>
+    <h2>by Kate Gordon</h2>
+    <p>
+        This app will use your body weight and height to calculate a BMI
+        Index which can be used to classify your health risks
+    </p>
+</header>
+<section>
+    <form method="post">
+        <h2>Height</h2>
+        <p>
+            Please enter your current height in whole numbers
+            using metric or imperial units
+        </p>
+        <p>
+            <input type="number" placeholder="Feet" />
+            <input type="number" placeholder="Inches" />
+        </p>
+        <p>
+            <input type="number" placeholder="Centimetres" />
+        </p>
+        <h2>Weight</h2>
+        <p>
+            Please enter your current weight in whole numbers
+            using metric or imperial units
+        </p>
+        <p>
+            <input type="number" placeholder="Stone" />
+            <input type="number" placeholder="Pounds" />
+        </p>
+        <p>
+            <input type="number" placeholder="Kilograms" />
+        </p>
+        <p>
+            <button class="btn btn-success" type="submit">Calculate</button>
+        </p>
+    </form>
+</section>
+
