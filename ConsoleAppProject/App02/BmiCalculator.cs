@@ -29,24 +29,26 @@ namespace ConsoleAppProject.App02
         private string unitType;
         private string weightUnit;
         private string heightUnit;
+        private int calculation;
         private int weight;
         private int height;
-        private double BMI;
+        private double bmi;
 
         /// <summary>
-        /// Constructor for Distance Converter
+        /// Constructor for BmiConverter
         /// </summary>
         public BmiCalculator()
         {
-            unitType = METRIC;
+            unitType = null;
+            weightUnit = null;
+            heightUnit = null;
             weight = 0;
             height = 0;
         }
 
         /// <summary>
-        /// This method will input the distance measured in miles
-        /// calculate the same distance in feet, and output the
-        /// distance in feet.
+        /// This method will output the Body Mass Index
+        /// based on the data provided by the user.
         /// </summary>
         public void CalculateBodyMassIndex()
         {
@@ -54,26 +56,42 @@ namespace ConsoleAppProject.App02
 
             unitType = SelectUnit(" Please select between Metric and Imperial > ");
                 
+            Console.WriteLine($"\n Calculating BMI using {unitType}");
 
-            Console.WriteLine($"\n Calculating bmi in {unitType}");
-
-                InputWeight($"\n Please enter your weight {weightUnit} > ");
-                InputHeight($"\n Please enter your height {heightUnit} > ");
+            InputWeight($"\n Please enter your weight in {weightUnit} > ");
+            InputHeight($"\n Please enter your height in {heightUnit} > ");
 
             CalculateBmi();
             OutputBodyMassIndex();
         }
 
-        private void CalculateBmi()
+        /// <summary>
+        /// To calculate the Body Mass Index based on the
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private double CalculateBmi()
         {
-            if (unitType == METRIC)
             {
-                BMI = weight/ ((height / 100)^2);
+                if (unitType == METRIC)
+                {
+                    weightUnit = KILOGRAMS;
+                    heightUnit = CENTIMETERS;
+
+                   calculation = weight / ((height / 100) ^ 2);
+
+                    bmi = Convert.ToInt32(calculation);
+                }
+                else if (unitType == IMPERIAL)
+                {
+                    weightUnit = STONE;
+                    heightUnit = FEET;
+
+                    calculation = (weight * 703) / (height ^ 2);
+
+                    bmi = Convert.ToInt32(calculation);
+                }
             }
-            else if (unitType == IMPERIAL)
-            {
-                BMI = (weight * 703) / (height ^ 2);
-            }     
         }
 
         /// <summary>
@@ -87,8 +105,8 @@ namespace ConsoleAppProject.App02
             string choice = DisplayChoices(prompt);
 
             string unit = ExecuteChoice(choice);
-            Console.WriteLine($"\n You have chosen {unitType}");
-            return unitType;
+            Console.WriteLine($"\n You have chosen {unit}");
+            return unit;
         }
 
         /// <summary>
@@ -100,7 +118,7 @@ namespace ConsoleAppProject.App02
         {
 
             if (choice.Equals("1"))
-            {
+            {       
                 return METRIC;
             }
             else if (choice.Equals("2"))
@@ -160,7 +178,7 @@ namespace ConsoleAppProject.App02
         {
             Console.WriteLine($"\n {weight} {weightUnit}" +
                 $"  {height} {heightUnit}\n");
-            Console.WriteLine($"\n {BMI}!");
+            Console.WriteLine($"\n {bmi}!");
         }
 
         /// <summary>
