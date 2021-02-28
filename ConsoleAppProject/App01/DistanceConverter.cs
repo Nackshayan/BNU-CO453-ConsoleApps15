@@ -57,6 +57,11 @@ namespace ConsoleAppProject.App01
             OutputDistance();
         }
 
+
+        /// <summary>
+        /// Method to calculate the convsion based on the user input
+        /// distance and selected units
+        /// </summary>
         private void CalculateDistance()
         {
             if (fromUnit == MILES && toUnit == FEET)

@@ -56,7 +56,10 @@ namespace ConsoleAppProject.App02
         }
 
         /// <summary>
-        /// 
+        /// This method will input the weight and height measured in
+        /// metric or imperial units, calculate the BMI based on the 
+        /// weight and height measurments, and output the
+        /// BMI
         /// </summary>
         public void CalculateBodyMassIndex()
         {
@@ -73,6 +76,10 @@ namespace ConsoleAppProject.App02
             OutputBmi();
         }
 
+        /// <summary>
+        /// Method to output the BMI based on the imput weight and
+        /// height in the selected units, to the user.
+        /// </summary>
         private void OutputBmi()
         {
             Console.WriteLine($"\n {weight} {weightUnit}" +
@@ -81,6 +88,9 @@ namespace ConsoleAppProject.App02
             Console.WriteLine($"This means you are {bmiMeaning}!");
         }
 
+        /// <summary>
+        /// Method to find the users weight status based on their BMI
+        /// </summary>
         private void BmiMeaning()
         {
             if(bmi <= 18.50)
@@ -97,11 +107,11 @@ namespace ConsoleAppProject.App02
             }
             else if(bmi >= 30.0 && bmi <= 34.9)
             {
-                bmiMeaning = OBESE_CLASS_ONE
+                bmiMeaning = OBESE_CLASS_ONE;
             }
             else if(bmi >= 35 && bmi <= 39.9)
             {
-                bmiMeaning = OBESE_CLASS_TWO
+                bmiMeaning = OBESE_CLASS_TWO;
             }
             else if(bmi >= 40)
             {
@@ -110,7 +120,8 @@ namespace ConsoleAppProject.App02
         }
 
         /// <summary>
-        /// 
+        /// Method to calculate the BMI based on the input
+        /// height and weight in the user selected units.
         /// </summary>
         private void CalculateBmi()
         {
@@ -128,7 +139,8 @@ namespace ConsoleAppProject.App02
         }
 
         /// <summary>
-        /// 
+        /// Display a menu of unit types to the user, prompt
+        /// the user to select one and return it.
         /// </summary>
         /// <param name="prompt"></param>
         /// <returns></returns>
