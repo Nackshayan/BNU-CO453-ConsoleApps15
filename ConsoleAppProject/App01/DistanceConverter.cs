@@ -51,7 +51,7 @@ namespace ConsoleAppProject.App01
 
             Console.WriteLine($"\n Converting {fromUnit} to {toUnit}");
 
-            fromDistance = InputDistance($"\n Please entre the number of {fromUnit} > ");
+            fromDistance = InputDistance($"\n Please enter the number of {fromUnit} > ");
 
             CalculateDistance();
             OutputDistance();

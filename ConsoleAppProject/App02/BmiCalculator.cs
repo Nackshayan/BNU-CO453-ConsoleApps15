@@ -42,9 +42,9 @@ namespace ConsoleAppProject.App02
             weight = 0.0;
             height = 0.0;
 
-            unitType = METRIC;
-            weightUnit = KILOGRAMS;
-            heightUnit = METRES;
+            unitType = null;
+            weightUnit = null;
+            heightUnit = null;
         }
 
         /// <summary>
@@ -56,10 +56,10 @@ namespace ConsoleAppProject.App02
 
             unitType = SelectUnitType(" Please select between Imperical and Metric units > ");
 
-            Console.WriteLine($"\n Calculating BMI in {weightUnit} and {heightUnit}");
+            Console.WriteLine($"\n Calculating BMI in {unitType}");
 
             weightUnit = InputWeight($"\n Please enter the weight in {weightUnit} > ");
-            heightUnit = InputHeight($"\n Please enter the height in {heightUnit}")
+            heightUnit = InputHeight($"\n Please enter the height  in {heightUnit} > ");
 
             CalculateBmi();
             OutputBmi();
@@ -82,7 +82,7 @@ namespace ConsoleAppProject.App02
             }
             else if(weightUnit == STONE && heightUnit == FEET)
             {
-                bmi = ((weight*POUNDS_IN_STONE)*703)/((height*INCHES_IN_FEET)* (height * INCHES_IN_FEET))
+                bmi = ((weight * POUNDS_IN_STONE) * 703) / ((height * INCHES_IN_FEET) * (height * INCHES_IN_FEET));
             }
         }
 
