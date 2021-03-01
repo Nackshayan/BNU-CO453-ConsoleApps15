@@ -33,8 +33,26 @@ namespace ConsoleAppProject.App02
         public const string OBESE_CLASS_TWO = "Obese Class Two";
         public const string OBESE_CLASS_THREE = "Obese Class Three";
 
-        private double Index;
-        private object IndexMeaning;
+        public UnitTypes UnitTypes
+        {
+            get => default;
+        }
+
+        //Metric Details
+        public int WeightInStones { get; set; }
+        public int WeightInPounds { get; set; }
+
+        public int HeightInFeet { get; set; }
+        public int HeightInInches { get; set; }
+
+        //Imperial Details
+        public double WeightInKilograms { get; set; }
+        public int HeightInCentimetres { get; set; }
+
+        private double HeightInMetres
+
+        public double Index;
+        public string IndexMeaning;
 
         /// <summary>
         /// BMi Calculator Constructor
