@@ -33,20 +33,15 @@ namespace ConsoleAppProject.App02
         public const string OBESE_CLASS_TWO = "Obese Class Two";
         public const string OBESE_CLASS_THREE = "Obese Class Three";
 
-        private double weight;
-        private double height;
-        private string unitType;
-        private string weightUnit;
-        private string heightUnit;
-        private double bmi;
-        private object bmiMeaning;
+        private double Index;
+        private object IndexMeaning;
 
         /// <summary>
         /// BMi Calculator Constructor
         /// </summary>
         public BmiCalculator()
         {
-            bmi = 0;
+            Index = 0;
             weight = 0.0;
             height = 0.0;
 
@@ -84,8 +79,8 @@ namespace ConsoleAppProject.App02
         {
             Console.WriteLine($"\n {weight} {weightUnit}" +
                 $" is {height} {heightUnit}");
-            Console.WriteLine($"Your BMI is {bmi}!\n");
-            Console.WriteLine($"This means you are {bmiMeaning}!");
+            Console.WriteLine($"Your BMI is {Index}!\n");
+            Console.WriteLine($"This means you are {IndexMeaning}!");
         }
 
         /// <summary>
@@ -93,29 +88,29 @@ namespace ConsoleAppProject.App02
         /// </summary>
         private void BmiMeaning()
         {
-            if(bmi <= 18.50)
+            if(Index <= 18.50)
             {
-                bmiMeaning = UNDERWEIGHT;
+                IndexMeaning = UNDERWEIGHT;
             }
-            else if(bmi >= 18.5 && bmi <= 24.9)
+            else if(Index >= 18.5 && Index <= 24.9)
             {
-                bmiMeaning = NORMAL;
+                IndexMeaning = NORMAL;
             }
-            else if(bmi >= 25.0 && bmi <= 29.9)
+            else if(Index >= 25.0 && Index <= 29.9)
             {
-                bmiMeaning = OVERWEIGHT;
+                IndexMeaning = OVERWEIGHT;
             }
-            else if(bmi >= 30.0 && bmi <= 34.9)
+            else if(Index >= 30.0 && Index <= 34.9)
             {
-                bmiMeaning = OBESE_CLASS_ONE;
+                IndexMeaning = OBESE_CLASS_ONE;
             }
-            else if(bmi >= 35 && bmi <= 39.9)
+            else if(Index >= 35 && Index <= 39.9)
             {
-                bmiMeaning = OBESE_CLASS_TWO;
+                IndexMeaning = OBESE_CLASS_TWO;
             }
-            else if(bmi >= 40)
+            else if(Index >= 40)
             {
-                bmiMeaning = OBESE_CLASS_THREE;
+                IndexMeaning = OBESE_CLASS_THREE;
             }
         }
 
@@ -127,15 +122,15 @@ namespace ConsoleAppProject.App02
         {
             if(weightUnit == KILOGRAMS && heightUnit == METRES)
             {
-                bmi = weight / (height * height);
+                Index = weight / (height * height);
                
             }
             else if(weightUnit == STONE && heightUnit == FEET)
             {
-                bmi = ((weight * POUNDS_IN_STONE) * 703) / ((height * INCHES_IN_FEET) * (height * INCHES_IN_FEET));
+                Index = ((weight * POUNDS_IN_STONE) * 703) / ((height * INCHES_IN_FEET) * (height * INCHES_IN_FEET));
             }
 
-            bmi = Convert.ToInt32(bmi);
+            Index = Convert.ToInt32(Index);
         }
 
         /// <summary>
