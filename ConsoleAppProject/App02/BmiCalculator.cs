@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ConsoleAppProject.App02
 {
@@ -81,7 +82,7 @@ namespace ConsoleAppProject.App02
             Height = InputHeight($"\n Please enter the height  in {HeightUnit} > ");
 
             CalculateIndex();
-            BmiMeaning();
+            GetBmiMeaning();
             OutputBmi();
         }
 
@@ -100,9 +101,8 @@ namespace ConsoleAppProject.App02
         /// <summary>
         /// Method to find the users weight status based on their BMI
         /// </summary>
-        private string BmiMeaning()
+        private string GetBmiMeaning()
         {
-
             if (Index <= IndexUnderweight)
             {
                 IndexMeaning = Underweight;
