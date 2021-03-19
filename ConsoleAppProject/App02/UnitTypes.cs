@@ -7,6 +7,6 @@
     public enum UnitTypes
     {
         Metric,
-        Imperial
+        Imperial,
     }
 }

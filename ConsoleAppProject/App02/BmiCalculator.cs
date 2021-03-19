@@ -13,45 +13,40 @@ namespace ConsoleAppProject.App02
     public class BmiCalculator
     {
         // constants
-        public const string STONE = "Stone";
-        public const string KILOGRAMS = "Kilograms";
+        public const string Stone = "Stone";
+        public const string Kilograms = "Kilograms";
 
-        public const string FEET = "Feet";
-        public const string METRES = "Metres";
+        public const string Feet = "Feet";
+        public const string Metres = "Metres";
     
-        public const string METRIC = "Metric";
-        public const string IMPERIAL = "Imperial";
+        public const string Metric = "Metric";
+        public const string Imperial = "Imperial";
 
-        public const int POUNDS_IN_STONE = 14;
-        public const int CENTIMETERS_IN_METRES = 100;
-        public const int INCHES_IN_FEET = 12;
+        public const int PoundsInStone = 14;
+        public const int CentimetresInMetres = 100;
+        public const int InchesInFeet = 12;
 
-        public const string UNDERWEIGHT = "Underweight";
-        public const string NORMAL = "Normal";
-        public const string OVERWEIGHT = "Overweight";
-        public const string OBESE_CLASS_ONE = "Obese Class One";
-        public const string OBESE_CLASS_TWO = "Obese Class Two";
-        public const string OBESE_CLASS_THREE = "Obese Class Three";
+        public const string Underweight = "Underweight";
+        public const string Normal = "Normal";
+        public const string Overweight = "Overweight";
+        public const string ObeseClassOne = "Obese Class One";
+        public const string ObeseClassTwo = "Obese Class Two";
+        public const string ObeseClassThree = "Obese Class Three";
 
-        public UnitTypes UnitTypes
-        {
-            get => default;
-        }
+        public const double IndexUnderweight = 18.50;
+        public const double IndexNormal = 24.90;
+        public const double IndexOverweight = 29.90;
+        public const double IndexObeseClassOne = 34.90;
+        public const double IndexObeseClassTwo = 39.90;
+        public const double IndexObeseClassThree = 40.00;
 
-        //Metric Details
-        public int WeightInStones { get; set; }
-        public int WeightInPounds { get; set; }
+        public double Height { get; set; }
+        public string UnitType { get; set; }
+        public string WeightUnit { get; set; }
+        public string HeightUnit { get; set; }
+        public double Weight { get; set; }
 
-        public int HeightInFeet { get; set; }
-        public int HeightInInches { get; set; }
-
-        //Imperial Details
-        public double WeightInKilograms { get; set; }
-        public int HeightInCentimetres { get; set; }
-
-        private double HeightInMetres
-
-        public double Index;
+        public double Index { get; set; }
         public string IndexMeaning;
 
         /// <summary>
@@ -60,12 +55,12 @@ namespace ConsoleAppProject.App02
         public BmiCalculator()
         {
             Index = 0;
-            weight = 0.0;
-            height = 0.0;
+            Weight = 0.0;
+            Height = 0.0;
 
-            unitType = null;
-            weightUnit = null;
-            heightUnit = null;
+            UnitType = null;
+            WeightUnit = null;
+            HeightUnit = null;
         }
 
         /// <summary>
@@ -78,14 +73,15 @@ namespace ConsoleAppProject.App02
         {
             OutputHeading();
 
-            unitType = SelectUnitType(" Please select between Imperical and Metric units > ");
+            UnitType = SelectUnitType($" Please select between {UnitTypes.Imperial} and {UnitTypes.Metric} units > ");
 
-            Console.WriteLine($"\n Calculating BMI from {weightUnit} and {heightUnit}");
+            Console.WriteLine($"\n Calculating BMI from {WeightUnit} and {HeightUnit}");
 
-            weight = InputWeight($"\n Please enter the weight in {weightUnit} > ");
-            height = InputHeight($"\n Please enter the height  in {heightUnit} > ");
+            Weight = InputWeight($"\n Please enter the weight in {WeightUnit} > ");
+            Height = InputHeight($"\n Please enter the height  in {HeightUnit} > ");
 
-            CalculateBmi();
+            CalculateIndex();
+            BmiMeaning();
             OutputBmi();
         }
 
@@ -95,57 +91,60 @@ namespace ConsoleAppProject.App02
         /// </summary>
         private void OutputBmi()
         {
-            Console.WriteLine($"\n {weight} {weightUnit}" +
-                $" is {height} {heightUnit}");
-            Console.WriteLine($"Your BMI is {Index}!\n");
-            Console.WriteLine($"This means you are {IndexMeaning}!");
+            Console.WriteLine($"\n Using the weight {Weight} {WeightUnit}" +
+                $" and height {Height} {HeightUnit}");
+            Console.WriteLine($" Your BMI is {Index}!\n");
+            Console.WriteLine($" This means you are {IndexMeaning}!");
         }
 
         /// <summary>
         /// Method to find the users weight status based on their BMI
         /// </summary>
-        private void BmiMeaning()
+        private string BmiMeaning()
         {
-            if(Index <= 18.50)
+
+            if (Index <= IndexUnderweight)
             {
-                IndexMeaning = UNDERWEIGHT;
+                IndexMeaning = Underweight;
             }
-            else if(Index >= 18.5 && Index <= 24.9)
+            else if (Index >= IndexUnderweight && Index <= IndexNormal)
             {
-                IndexMeaning = NORMAL;
+                IndexMeaning = Normal;
             }
-            else if(Index >= 25.0 && Index <= 29.9)
+            else if (Index >= IndexNormal && Index <= IndexOverweight)
             {
-                IndexMeaning = OVERWEIGHT;
+                IndexMeaning = Overweight;
             }
-            else if(Index >= 30.0 && Index <= 34.9)
+            else if (Index >= IndexOverweight && Index <= IndexObeseClassOne)
             {
-                IndexMeaning = OBESE_CLASS_ONE;
+                IndexMeaning = ObeseClassOne;
             }
-            else if(Index >= 35 && Index <= 39.9)
+            else if (Index >= IndexObeseClassOne && Index <= IndexObeseClassTwo)
             {
-                IndexMeaning = OBESE_CLASS_TWO;
+                IndexMeaning = ObeseClassTwo;
             }
-            else if(Index >= 40)
+            else if (Index >= IndexObeseClassThree)
             {
-                IndexMeaning = OBESE_CLASS_THREE;
+                IndexMeaning = ObeseClassThree;
             }
+
+            return IndexMeaning;
         }
 
         /// <summary>
         /// Method to calculate the BMI based on the input
         /// height and weight in the user selected units.
         /// </summary>
-        private void CalculateBmi()
+        private void CalculateIndex()
         {
-            if(weightUnit == KILOGRAMS && heightUnit == METRES)
+            if(WeightUnit == Kilograms && HeightUnit == Metres)
             {
-                Index = weight / (height * height);
+                Index = Weight / (Height * Height);
                
             }
-            else if(weightUnit == STONE && heightUnit == FEET)
+            else if(WeightUnit == Stone && HeightUnit == Feet)
             {
-                Index = ((weight * POUNDS_IN_STONE) * 703) / ((height * INCHES_IN_FEET) * (height * INCHES_IN_FEET));
+                Index = ((Weight * PoundsInStone) * 703) / ((Height * InchesInFeet) * (Height * InchesInFeet));
             }
 
             Index = Convert.ToInt32(Index);
@@ -161,9 +160,9 @@ namespace ConsoleAppProject.App02
         {
             string choice = DisplayChoices(prompt);
 
-            unitType = ExecuteChoice(choice);
-            Console.WriteLine($"\n You have chosen {unitType}");
-            return unitType;
+            UnitType = ExecuteChoice(choice);
+            Console.WriteLine($"\n You have chosen {UnitType}");
+            return UnitType;
         }
 
         /// <summary>
@@ -175,15 +174,15 @@ namespace ConsoleAppProject.App02
         {
             if (choice.Equals("1"))
             {
-                heightUnit = METRES;
-                weightUnit = KILOGRAMS;
-                return METRIC;
+                HeightUnit = Metres;
+                WeightUnit = Kilograms;
+                return Metric;
             }
             else if (choice.Equals("2"))
             {
-                heightUnit = FEET;
-                weightUnit = STONE;
-                return IMPERIAL;
+                HeightUnit = Feet;
+                WeightUnit = Stone;
+                return Imperial;
             }
             else
             {
@@ -201,8 +200,8 @@ namespace ConsoleAppProject.App02
         private string DisplayChoices(string prompt)
         {
             Console.WriteLine();
-            Console.WriteLine($" 1. {METRIC}");
-            Console.WriteLine($" 2. {IMPERIAL}");
+            Console.WriteLine($" 1. {Metric}");
+            Console.WriteLine($" 2. {Imperial}");
             Console.WriteLine();
 
             Console.WriteLine(prompt);
