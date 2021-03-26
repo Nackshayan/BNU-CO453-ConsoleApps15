@@ -101,7 +101,7 @@ namespace ConsoleAppProject.App02
         /// <summary>
         /// Method to find the users weight status based on their BMI
         /// </summary>
-        private string GetBmiMeaning()
+        public string GetBmiMeaning()
         {
             if (Index <= IndexUnderweight)
             {

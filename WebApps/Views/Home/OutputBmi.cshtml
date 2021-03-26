@@ -1,0 +1,22 @@
+﻿@model double
+@using ConsoleAppProject.App02
+@{
+    ViewData["Title"] = "OutputBmi";
+}
+@{ 
+    BmiCalculator bmi = new BmiCalculator();
+    bmi.Index = Model;
+}
+<header class="jumbotron">
+    <h1>BMI Results</h1>
+    <h2>by Kate Gordon</h2>
+</header>
+<section>
+    <h2>Your BMI Index</h2>
+    <p class="text-lead">
+        @bmi.GetBmiMeaning();
+    </p>
+    <h2></h2>
+</section>
+
+

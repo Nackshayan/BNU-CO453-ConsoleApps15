@@ -16,13 +16,19 @@ namespace WebApps.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult BmiCalculator()
         {
             return View();
         }
 
+        [HttpPost]
         public IActionResult BmiCalculator(BmiCalculator bmi)
+        {
+            return View();
+        }
+
+        public IActionResult OutputBmi()
         {
             return View();
         }
