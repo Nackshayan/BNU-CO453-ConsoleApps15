@@ -27,12 +27,12 @@ namespace ConsoleAppProject.App02
         public const int CentimetresInMetres = 100;
         public const int InchesInFeet = 12;
 
-        public const string Underweight = "Underweight";
-        public const string Normal = "Normal";
-        public const string Overweight = "Overweight";
-        public const string ObeseClassOne = "Obese Class One";
-        public const string ObeseClassTwo = "Obese Class Two";
-        public const string ObeseClassThree = "Obese Class Three";
+        public const string Underweight = "You areUnderweight";
+        public const string Normal = "You are in the Normal range";
+        public const string Overweight = "You are Overweight";
+        public const string ObeseClassOne = "You are Obese Class One";
+        public const string ObeseClassTwo = "You are Obese Class Two";
+        public const string ObeseClassThree = "You are Obese Class Three";
 
         public const double IndexUnderweight = 18.50;
         public const double IndexNormal = 24.90;
@@ -82,20 +82,8 @@ namespace ConsoleAppProject.App02
             Height = InputHeight($"\n Please enter the height  in {HeightUnit} > ");
 
             CalculateIndex();
-            GetBmiMeaning();
-            OutputBmi();
-        }
-
-        /// <summary>
-        /// Method to output the BMI based on the imput weight and
-        /// height in the selected units, to the user.
-        /// </summary>
-        private void OutputBmi()
-        {
-            Console.WriteLine($"\n Using the weight {Weight} {WeightUnit}" +
-                $" and height {Height} {HeightUnit}");
-            Console.WriteLine($" Your BMI is {Index}!\n");
-            Console.WriteLine($" This means you are {IndexMeaning}!");
+            Console.WriteLine(GetBmiMeaning());
+            Console.WriteLine(GetBameMessage());
         }
 
         /// <summary>
@@ -103,32 +91,58 @@ namespace ConsoleAppProject.App02
         /// </summary>
         public string GetBmiMeaning()
         {
+            StringBuilder message = new StringBuilder("\n");
+
             if (Index <= IndexUnderweight)
             {
-                IndexMeaning = Underweight;
+                message.Append($"Your BMI is {Index:0.00}, "
+                    + $" {IndexMeaning = Underweight} ");
             }
             else if (Index >= IndexUnderweight && Index <= IndexNormal)
             {
-                IndexMeaning = Normal;
+                message.Append($"Your BMI is {Index:0.00}, "
+                    + $" {IndexMeaning = Normal} ");
             }
             else if (Index >= IndexNormal && Index <= IndexOverweight)
             {
-                IndexMeaning = Overweight;
+                message.Append($"Your BMI is {Index:0.00}, "
+                    + $" {IndexMeaning = Overweight} ");
+                ;
             }
             else if (Index >= IndexOverweight && Index <= IndexObeseClassOne)
             {
-                IndexMeaning = ObeseClassOne;
+                message.Append($"Your BMI is {Index:0.00}, "
+                    + $" {IndexMeaning = ObeseClassOne} ");
             }
             else if (Index >= IndexObeseClassOne && Index <= IndexObeseClassTwo)
             {
-                IndexMeaning = ObeseClassTwo;
+                message.Append($"Your BMI is {Index:0.00}, "
+                    + $" {IndexMeaning = ObeseClassTwo} ");
             }
             else if (Index >= IndexObeseClassThree)
             {
-                IndexMeaning = ObeseClassThree;
+                message.Append($"Your BMI is {Index:0.00}, "
+                    + $" {IndexMeaning = ObeseClassThree} ");
             }
 
-            return IndexMeaning;
+            return message.ToString();
+        }
+
+        /// <summary>
+        /// Output a message for BAME users who are
+        /// at higher risk
+        /// </summary>
+        public string GetBameMessage()
+        {
+            StringBuilder message = new StringBuilder("\n");
+            message.Append(" If you are Black, Asian or other minority");
+            message.Append("\n ethnic groups, you have a higher risk");
+            message.Append("\n");
+            message.Append("\n Adults 23.0 or more are at increased risk");
+            message.Append("\n Adults 27.5 or more are at high risk");
+            message.Append("\n");
+
+            return message.ToString();
         }
 
         /// <summary>

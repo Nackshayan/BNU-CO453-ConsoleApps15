@@ -28,6 +28,11 @@ namespace WebApps.Controllers
             return View();
         }
 
+        public IActionResult HealthMessage()
+        {
+            return View();
+        }
+
         public IActionResult OutputBmi()
         {
             return View();
