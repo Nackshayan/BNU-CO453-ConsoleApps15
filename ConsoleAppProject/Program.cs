@@ -28,5 +28,6 @@ namespace ConsoleAppProject
             BmiCalculator calculator = new BmiCalculator();
             calculator.CalculateBodyMassIndex();
         }
+        /// Add Menu and Console Helper!!
     }
 }

@@ -19,13 +19,22 @@ namespace WebApps.Controllers
         [HttpGet]
         public IActionResult BmiCalculator()
         {
-            return View();
+            BmiCalculator calculator = new BmiCalculator();
+
+            return View(calculator);
         }
 
         [HttpPost]
         public IActionResult BmiCalculator(BmiCalculator bmi)
         {
-            return View();
+            bmi.HeightUnit = "Metres";
+            bmi.WeightUnit = "Kilograms";
+            bmi.Height = bmi.Height / 100;
+
+            bmi.CalculateIndex();
+            double index = bmi.Index;
+
+            return RedirectToAction("HealthMessage", new { index });
         }
 
         public IActionResult HealthMessage()

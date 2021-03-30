@@ -27,7 +27,7 @@ namespace ConsoleAppProject.App02
         public const int CentimetresInMetres = 100;
         public const int InchesInFeet = 12;
 
-        public const string Underweight = "You areUnderweight";
+        public const string Underweight = "You are Underweight";
         public const string Normal = "You are in the Normal range";
         public const string Overweight = "You are Overweight";
         public const string ObeseClassOne = "You are Obese Class One";
@@ -40,6 +40,8 @@ namespace ConsoleAppProject.App02
         public const double IndexObeseClassOne = 34.90;
         public const double IndexObeseClassTwo = 39.90;
         public const double IndexObeseClassThree = 40.00;
+
+
 
         public double Height { get; set; }
         public string UnitType { get; set; }
@@ -149,7 +151,7 @@ namespace ConsoleAppProject.App02
         /// Method to calculate the BMI based on the input
         /// height and weight in the user selected units.
         /// </summary>
-        private void CalculateIndex()
+        public void CalculateIndex()
         {
             if(WeightUnit == Kilograms && HeightUnit == Metres)
             {
@@ -161,7 +163,7 @@ namespace ConsoleAppProject.App02
                 Index = ((Weight * PoundsInStone) * 703) / ((Height * InchesInFeet) * (Height * InchesInFeet));
             }
 
-            Index = Convert.ToInt32(Index);
+            Index = Convert.ToDouble(Index);
         }
 
         /// <summary>
